@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -10,9 +10,9 @@ import TweetsList from "./TweetsList/TweetsList";
 
 const Tweets = () => {
 const cards = useSelector(getCards);
-    const [category, setCategory] = useState(null);
-      const [followersCount, setFollowersCount] = useState(0);
-      const [isFollowing, setIsFollowing] = useState(false);
+    // const [category, setCategory] = useState(null);
+    //   const [followersCount, setFollowersCount] = useState(0);
+    //   const [isFollowing, setIsFollowing] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getAllUsers());
@@ -27,11 +27,11 @@ const cards = useSelector(getCards);
         <NavLink to="/">
           <button>Back</button>
         </NavLink>
-        <TweetsFilter setCategory={setCategory} />
+        <TweetsFilter />
         <TweetsList
           cards={cards}
         //   handleFollowClick={() => handleFollowClick()}
-          isFollowing={isFollowing}
+        //   isFollowing={isFollowing}
         />
       </>
     );
