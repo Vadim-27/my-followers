@@ -8,6 +8,7 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 a {
@@ -49,6 +50,8 @@ img {
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+  min-height: 1500px;
+  background-color: #EBD8FF;
 
   @media screen and (min-width: 768px) {
     box-sizing: border-box;

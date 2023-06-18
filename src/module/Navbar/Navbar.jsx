@@ -2,19 +2,20 @@
 import { NavLink } from 'react-router-dom';
 
 import items from './items';
+import css from './navbar.module.scss'
 
 const Navbar = () => {
     const elements = items.map(({ id, text, link }) => (
-       
-        <li key={id}>
-            <NavLink to={link}>{ text}</NavLink>
-            </li>
-        
-    ))
+      <li key={id}>
+        <NavLink className={css.navLink} to={link}>
+          {text}
+        </NavLink>
+      </li>
+    ));
 
     return (
       <div>
-        <ul>{elements}</ul>
+        <ul className={css.wrapperHeder}>{elements}</ul>
       </div>
     );
 }

@@ -1,0 +1,31 @@
+.wrapperHeder{
+    display: flex;
+    background-color: #ebd8ff;
+    justify-content: center;
+    border-bottom: 1px solid #5736a3;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+}
+.navLink{
+    display: block;
+    padding-top:  20px;
+    padding-right:  20px;
+    padding-bottom:  20px;
+    padding-left:  20px;
+// padding:  50px;
+    font-size: 18px;
+line-height: 1.22em;
+
+
+text-transform: uppercase;
+font-family: "Montserrat";
+  
+  font-weight: 600;
+  color: #5736a3;
+}
+.navLink:global(.active) {
+  color: #2f1963;
+  font-weight: bold;
+}
+.navLink:focus{
+    font-weight: bold;
+}

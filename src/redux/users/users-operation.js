@@ -37,3 +37,14 @@ export const getUserByCategory = createAsyncThunk(
     }
   }
 );
+export const pushFollower = createAsyncThunk(
+  'user/addFollow',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = data;
+      return result;
+    } catch ({ responce }) {
+      return rejectWithValue(responce);
+    }
+  }
+);
