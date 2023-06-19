@@ -9,11 +9,11 @@ import './index.scss';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <div className='container'>
-        <App />
-      </div>
+      <BrowserRouter basename="/my-followers">
+        <div className="container">
+          <App />
+        </div>
       </BrowserRouter>
-      </Provider>
+    </Provider>
   </React.StrictMode>
 );

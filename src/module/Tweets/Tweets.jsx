@@ -7,43 +7,46 @@ import { getCards } from "redux/users/users-selectors";
 
 import TweetsFilter from "./TweetsFilter/TweetsFilter";
 import TweetsList from "./TweetsList/TweetsList";
-// import { getFoll } from "redux/users/users-selectors";
+import { getFoll } from "redux/users/users-selectors";
 import css from './tweets.module.scss'
 
 const Tweets = () => {
-  // const cards = useSelector(getCards);
+ 
   const allCards = useSelector(getCards);
-  const [isLimit, setLimit] = useState(3);
-  //  const follow = useSelector(getFoll);
-  // const [category, setCategory] = useState(null);
-  //   const [followersCount, setFollowersCount] = useState(0);
-  //   const [isFollowing, setIsFollowing] = useState(false);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllUsers(isLimit));
-  }, [dispatch, isLimit]);
 
+  const [isLimit, setLimit] = useState(3);
+  const follow = useSelector(getFoll);
+   const [copyCards, setCopyCards] = useState([]);
+   console.log('copyCards', copyCards);
+ 
+  
+  useEffect(() => {
+    setCopyCards(allCards);
+  }, [allCards]);
   const [isListOpen, setIsListOpen] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    console.log('selectedCategory', selectedCategory);
+    
     const handleClick = value => {
-      console.log('value', value);
-      // setCategory(value);
-       setSelectedCategory(value);
-       setIsListOpen(false);
+     
+      setIsListOpen(false);
+       if (value === 'following=false') {
+         setCopyCards(allCards.filter(card => !follow.includes(card.id)));
+       } else if (value === 'following=true') {
+         setCopyCards(allCards.filter(card => follow.includes(card.id)));
+       } else if (value === '/') {
+         setCopyCards(allCards);
+       } 
   };
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getAllUsers(isLimit));
+    }, [dispatch, isLimit]);
 
   const toggleOpen = () => {
     setIsListOpen(!isListOpen);
   };
 
-//   const [copyCards, setCopyCards] = useState(allCards);
-// console.log('copyCards', copyCards);
-//    if (selectedCategory === true) {
-//      setCopyCards(allCards.filter(card => !follow.includes(card.id)));
-//    } else if (selectedCategory === false) {
-//      setCopyCards (allCards.filter(card => follow.includes(card.id)));
-//    }
+ 
+  
 
   return (
     <>
@@ -52,7 +55,7 @@ const Tweets = () => {
         toggleOpen={toggleOpen}
         isListOpen={isListOpen}
       />
-      <TweetsList cards={allCards} />
+      <TweetsList cards={copyCards} />
       <button
         className={css.btnLoad}
         type="button"

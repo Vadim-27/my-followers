@@ -6,10 +6,11 @@ import { getFoll } from 'redux/users/users-selectors';
 
 
 import { SvgSelector } from 'utils/SvgSelector';
-// import items from "./items";
+
 import css from './tweets.module.scss';
 const TweetsList = ({ cards }) => {
-  // const [isFollow, setFollow] = useState();
+  console.log('cards', cards);
+  
   const dispatch = useDispatch();
   const follow = useSelector(getFoll);
 
@@ -34,7 +35,7 @@ const TweetsList = ({ cards }) => {
       </div>
       <div className={css.wrapperAvatar}>
         <img alt="avatar" className={css.avatar} src={avatar} />
-        {/* <p className={css.avatar}>{avatar}</p> */}
+        
       </div>
       <p className={css.tweets}>{tweets} TWEETS</p>
       <p className={css.followers}>
